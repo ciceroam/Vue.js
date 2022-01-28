@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="vermelho()">vermelho</button>
+      <button @click="verde()">verde</button>
+      <button @click="borda()">borda</button>
+      <button @click="resetar()">resetar</button>
+
+      <p ref="paragrafo">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aut corporis
+        dignissimos incidunt nobis sed neque assumenda reiciendis. Temporibus
+        illo ea tenetur, laudantium, fugit inventore in, nobis cumque fugiat hic
+        ullam? Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Perspiciatis molestias unde, odit, quas atque earum rerum, aperiam omnis
+        iusto quis impedit! Ratione soluta maiores rerum distinctio ex
+        accusantium vero commodi.
+      </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+        },
+        methods: {
+          vermelho() {
+            this.$refs.paragrafo.style.background = "red";
+          },
+          verde() {
+            this.$refs.paragrafo.style.background = "green";
+          },
+          borda() {
+            this.$refs.paragrafo.style.border = "2px solid black";
+          },
+          resetar() {
+            this.$refs.paragrafo.style = "";
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

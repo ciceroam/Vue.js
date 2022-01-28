@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+      Vue.component("painel", {
+        data() {
+          return {
+            titulo: "Painel Notícias",
+          };
+        },
+        methods: {
+          alerteAlgo() {
+            this.titulo = "Alertando Algo";
+          },
+        },
+        template: `
+          <div>
+            <h1>{{titulo}}</h1>
+            <button @click="alerteAlgo()">ALERTAR</button>
+          </div>
+          `,
+      });
+
+      const app = new Vue({
+        el: "#app",
+        data: {
+          numero: 0,
+        },
+        methods: {
+          atualizar() {
+            this.numero += 1;
+          },
+          destruir() {
+            this.$destroy();
+          },
+        },
+        template: `
+          <div>
+            <painel></painel>
+            <br>
+            {{numero}}  <button @click="atualizar()">ATUALIZAR NUMERO</button>
+            <br><br>
+            <button @click="destruir()">DESTRUIR INSTANCIA</button>
+          </div>`,
+        beforeCreate() {
+          console.log("Antes de criar");
+        },
+        created() {
+          console.log("Criado");
+        },
+        beforeMount() {
+          console.log("Antes de montar");
+        },
+        mounted() {
+          console.log("Montado");
+        },
+        beforeUpdate() {
+          console.log("Antes de atualizar " + this.numero);
+        },
+        updated() {
+          console.log("Atualizado " + this.numero);
+        },
+        beforeDestroy() {
+          console.log("Antes de destruir");
+        },
+        destroyed() {
+          console.log("Destruido");
+        },
+      });
+    </script>
+  </body>
+</html>
